@@ -14,7 +14,7 @@ class UserFactory extends Factory
         return [
             'name'                      => $this->faker->name,
             'username'                  => $this->faker->unique()->userName,
-            'avatar'                    => $this->getAvatar(),
+            'avatar'                    => null,
             'email'                     => $this->faker->unique()->safeEmail,
             'email_verified_at'         => now(),
             'privacy_ack_at'            => now(),
@@ -32,14 +32,15 @@ class UserFactory extends Factory
     }
 
     private function getAvatar(): ?string {
-        if ($this->faker->boolean(20)) {
-            //sometimes we wanna users without avatar - so we can test this case too.
-            return null;
-        }
-        $image = $this->getAvatarImage();
+        return null;
+        // if ($this->faker->boolean(20)) {
+        //     //sometimes we wanna users without avatar - so we can test this case too.
+        //     return null;
+        // }
+        // $image = $this->getAvatarImage();
 
-        File::copy($image, public_path('uploads/avatars/' . basename($image)));
-        return basename($image);
+        // File::copy($image, public_path('uploads/avatars/' . basename($image)));
+        // return basename($image);
     }
 
     private function getAvatarImage(): string {

@@ -77,6 +77,7 @@ class PermissionSeeder extends Seeder
         $roleClosedBeta->givePermissionTo($permissionUseTransitous);
 
         //Assign permissions to open-beta role
+        $roleOpenBeta->givePermissionTo($permissionUseTransitous);
         $roleOpenBeta->givePermissionTo($permissionCreateManualTrip);
     }
 }
