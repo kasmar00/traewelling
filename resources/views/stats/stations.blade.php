@@ -42,20 +42,20 @@
 
             let featureGroup = L.featureGroup().addTo(map);
 
-            @foreach($usedStations as $usedStation)
-            L.marker([{{ $usedStation->latitude }}, {{ $usedStation->longitude }}], {
-                icon: primaryDot
-            })
-                .addTo(featureGroup)
-                .bindPopup("{{ $usedStation->name }}");
-            @endforeach
-
             @foreach($passedStations as $passedStation)
             L.marker([{{ $passedStation->latitude }}, {{ $passedStation->longitude }}], {
                 icon: secondaryDot
             })
                 .addTo(featureGroup)
                 .bindPopup("{{ $passedStation->name }}");
+            @endforeach
+
+            @foreach($usedStations as $usedStation)
+            L.marker([{{ $usedStation->latitude }}, {{ $usedStation->longitude }}], {
+                icon: primaryDot
+            })
+                .addTo(featureGroup)
+                .bindPopup("{{ $usedStation->name }}");
             @endforeach
 
             map.fitBounds(featureGroup.getBounds());
