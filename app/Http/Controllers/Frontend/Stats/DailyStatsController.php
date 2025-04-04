@@ -19,10 +19,15 @@ class DailyStatsController extends Controller
                                          $status->mapLines = LocationController::forStatus($status)->getMapLines(true);
                                          return $status;
                                      });
+        
+        $previous_date = DailyStatsBackend::getPreviousTravelDate(Auth::user(), $date);
+        $next_date = DailyStatsBackend::getNextTravelDate(Auth::user(), $date);
 
         return view('stats.daily', [
             'date'     => $date,
             'statuses' => $statuses,
+            'previous_date' => $previous_date,
+            'next_date' => $next_date
         ]);
     }
 }
