@@ -2,11 +2,6 @@
 
 @section('title', __('stats'))
 
-@section('head')
-    @parent
-    @vite(['resources/js/stats.js'])
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row">
